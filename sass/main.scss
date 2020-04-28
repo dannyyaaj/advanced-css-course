@@ -2,6 +2,9 @@
 $color-primary:#7ed56f;
 $color-primary-light: #55c57a;
 $color-primary-dark: #28b485;
+$color-white: #fff;
+$color-gray: #777;
+$color-black: #000;
 
 * {
   margin: 0;
@@ -11,18 +14,16 @@ $color-primary-dark: #28b485;
 
 body {
   font-family: 'Lato', sans-serif;
-  color: #777;
+  color: $color-gray;
   font-weight: 400px;
   font-size: 16px;
   line-height: 1.7;
   padding: 2.5vh;
-  /* 30px */
 }
 
 .header {
   height: 95vh;
-  background-image: linear-gradient(
-    to right bottom,
+  background-image: linear-gradient(to right bottom,
       rgba($color-primary-light, 0.8),
       rgba($color-primary-dark, 0.8)),
     url('../img/hero.jpg');
@@ -32,54 +33,57 @@ body {
   position: relative;
 
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-}
 
-.header__logo-box {
-  position: absolute;
-  top: 40px;
-  left: 40px;
-  right: auto;
-  bottom: auto;
-}
+  &__logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: auto;
+    bottom: auto;
 
-.header__logo {
-  height: 35px;
-}
+  }
 
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+  &__logo {
+    height: 35px;
+  }
+
+  &__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
 }
 
 .heading-primary {
-  color: #fff;
+  color: $color-white;
   text-transform: uppercase;
   backface-visibility: hidden;
   margin-bottom: 60px;
+
+  &--main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400px;
+    letter-spacing: 35px;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+  }
+
+  &--sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.5px;
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+  }
 }
 
-.heading-primary--main {
-  display: block;
-  font-size: 60px;
-  font-weight: 400px;
-  letter-spacing: 35px;
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-}
 
-.heading-primary--sub {
-  display: block;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 17.5px;
-  animation-name: moveInRight;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-}
 
 @keyframes moveInLeft {
   0% {
@@ -129,63 +133,68 @@ body {
   }
 }
 
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 15px 40px;
-  display: inline-block;
-  border-radius: 100px;
-  transition: all .2s;
-  position: relative;
+.btn {
 
-}
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s;
+    position: relative;
 
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow:0 10px 20px rgba(0,0,0,0.3);
-}
+  }
 
-.btn:active {
-  transform: translateY(-1px);
-  box-shadow:0 5px 10px rgba(0,0,0,0.3);
-}
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba($color-black, 0.3);
 
-.btn--white {
-  background: #fff;
-  color: #777;
-}
+    /* style pseudo element on button hover */
 
-.btn::after {
-  content: "";
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  border-radius: 100px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: auto;
-  bottom: auto;
-  z-index: -1;
-  transition: all .35s;
-}
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
 
-.btn--white::after {
-  background: #fff;
-}
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba($color-black, 0.3);
+  }
 
-/* style pseudo element on button hover */
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0;
-}
+  &--white {
+    background: $color-white;
+    color: $color-gray;
 
-.btn--animated {
-  /* animation-name: moveInBottom;
+    &::after {
+      background: $color-white;
+    }
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: auto;
+    bottom: auto;
+    z-index: -1;
+    transition: all .35s;
+  }
+
+  &--animated {
+    /* animation-name: moveInBottom;
   animation-duration: .5s;
   animation-timing-function: ease-out; */
 
-  animation: moveInBottom .5s ease-out .75s;
-  animation-fill-mode: backwards;
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards;
+  }
+
 }

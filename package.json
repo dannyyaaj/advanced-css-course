@@ -4,7 +4,7 @@
   "description": "Landing page for natours",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile:sass": "node-sass sass/main.scss Natours/starter/css/style.css -w"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/dannyyaaj/advanced-css-course/issues"
   },
-  "homepage": "https://github.com/dannyyaaj/advanced-css-course#readme"
+  "homepage": "https://github.com/dannyyaaj/advanced-css-course#readme",
+  "devDependencies": {
+    "node-sass": "^4.13.1"
+  },
+  "dependencies": {
+    "jquery": "^3.5.0",
+    "live-server": "^1.2.1"
+  }
 }
